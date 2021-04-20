@@ -1,5 +1,11 @@
-const server = require("http").createServer();
-const io = require("socket.io")(server, {
+import express from 'express';
+import http from 'http';
+import { Server, Socket } from "socket.io";
+
+const app = express();
+const httpServer = http.createServer(app);
+
+const io = new Server(httpServer, {
   cors: {
     origin: "*",
   },
@@ -8,7 +14,7 @@ const io = require("socket.io")(server, {
 const PORT = 4000;
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 
-io.on("connection", (socket) => {
+io.on("connection", (socket: Socket) => {
 
   console.log('User joined');
   // Join a conversation
@@ -24,10 +30,10 @@ io.on("connection", (socket) => {
   // Leave the room if the user closes the socket
   socket.on("disconnect", () => {
     console.log('disconnect');
-    socket.leave(roomId);
+    socket.leave(roomId as string);
   });
 });
 
-server.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
