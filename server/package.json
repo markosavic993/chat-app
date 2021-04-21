@@ -2,7 +2,7 @@
   "name": "family-chat-app",
   "version": "1.0.0",
   "description": "Example chat app",
-  "main": "dist/index.js",
+  "main": "dist/app.js",
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
