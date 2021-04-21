@@ -4,7 +4,7 @@ import "./ChatRoom.scss";
 import useChat from "../useChat";
 
 const ChatRoom = (props) => {
-  const { roomId } = props.match.params;
+  const {roomId} = props.match.params;
   const {messages, sendMessage} = useChat(roomId);
   const [newMessage, setNewMessage] = React.useState("");
   const [title, setTitle] = React.useState("");
@@ -25,24 +25,24 @@ const ChatRoom = (props) => {
   };
 
   return (
-    <div>
+    <div className="cr-container">
       <h1>{title}</h1>
-      <div className="container">
-        <div className="messages">
-          <ol className="messagesList">
-            {messages.map((message, i) => (
-              <li
-                key={i}
-                className={`message-item ${
-                  message.ownedByCurrentUser ? "myMessage" : "receivedMessage"
-                }`}
-              >
-                {message.body}
-              </li>
-            ))}
-          </ol>
-        </div>
-        <textarea name="messageArea" value={newMessage} onChange={handleNewMessageChange} placeholder="Write message..."/>
+      <div>
+        <ol className="messages">
+          {messages.map((message, i) => (
+            <li
+              key={i}
+              className={`messageItem ${
+                message.ownedByCurrentUser ? "myMessage" : "receivedMessage"
+              }`}
+            >
+              {message.body}
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div className="actionArea">
+        <textarea name="messageArea" value={newMessage} onChange={handleNewMessageChange} rows="4" placeholder="Write message..."/>
         <button onClick={handleSendMessage}>Send</button>
       </div>
     </div>

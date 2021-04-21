@@ -1,0 +1,64 @@
+.cr-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 16px 120px;
+  background-color: white;
+
+  .messages {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding-left: 0;
+    overflow:hidden;
+    overflow-y:scroll;
+  }
+
+  .messageItem {
+    border: 1px solid lightgrey;
+    border-radius:2%;
+    padding: 10px;
+    width: 40%;
+    min-height: 25px;
+    margin-bottom: 16px;
+    word-wrap:break-word;
+  }
+
+  .myMessage {
+    background-color: #fefbd8;
+    margin-left: auto;
+  }
+
+  .receivedMessage {
+    background-color: #d5f4e6;
+  }
+
+  .actionArea {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 0 16px 8px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .messageArea {
+      height: 150px;
+    }
+
+    button {
+      height: 40px;
+      margin-top: 8px;
+      background-color: #618685;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+    }
+  }
+}

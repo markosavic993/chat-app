@@ -1,5 +1,6 @@
 import React from "react";
 import {useHistory} from 'react-router-dom';
+import "./CreateRoom.scss";
 
 const CreateRoom = () => {
 
@@ -20,29 +21,27 @@ const CreateRoom = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Create new chat room</h1>
-      <div className="container">
-        <form className="roomCreationForm" onSubmit={submitHandler}>
-          <label>
-            Title:
-            <input type="text"
-                   value={title}
-                   onChange={e => setTitle(e.target.value)}
-                   placeholder="Enter title..."/>
-          </label>
+      <form className="roomCreationForm" onSubmit={submitHandler}>
+        <label className="formField">
+          Title:
+          <input type="text"
+                 value={title}
+                 onChange={e => setTitle(e.target.value)}
+                 placeholder="Enter title..."/>
+        </label>
 
-          <label>
-            Topic description
-            <input type="text"
-                   value={description}
-                   onChange={e => setDescription(e.target.value)}
-                   placeholder="Enter topic description..."/>
-          </label>
+        <label className="formField">
+          Topic description
+          <input type="text"
+                 value={description}
+                 onChange={e => setDescription(e.target.value)}
+                 placeholder="Enter topic description..."/>
+        </label>
 
-          <input type="submit" value="Create and join"/>
-        </form>
-      </div>
+        <input className="submitButton" type="submit" value="Create and join"/>
+      </form>
     </div>
   );
 };
