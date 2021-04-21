@@ -2,25 +2,18 @@ import express from 'express';
 import http from 'http';
 import { Server, Socket } from 'socket.io';
 import cors from 'cors';
-import { DbService } from './services/DbService';
-import { CreateRoom } from './domain/usecases/CreateRoom';
-import { FindRoomById } from './domain/usecases/FindRoomById';
+import { createNewRoom, findRoomById } from './services/ChatRoomService';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 const httpServer = http.createServer(app);
-
 const io = new Server(httpServer, {
   cors: {
     origin: '*'
   }
 });
-
-const storageService = new DbService();
-const createRoom = new CreateRoom(storageService);
-const findRoomById = new FindRoomById(storageService);
 
 const PORT = 4000;
 const NEW_CHAT_MESSAGE_EVENT = 'newChatMessage';
@@ -46,13 +39,13 @@ io.on('connection', (socket: Socket) => {
 
 app.post('/rooms', (async (req, res) => {
   const { title, description } = req.body;
-  const roomId = await createRoom.handle(title, description)
+  const roomId = await createNewRoom(title, description)
   res.send({ id: roomId });
 }));
 
 app.get('/rooms/:id', (async (req, res) => {
   const { id } = req.params;
-  const foundRoom = await findRoomById.handle(id);
+  const foundRoom = await findRoomById(id);
   if (!foundRoom) {
     res.status(404).send('Not found!');
   }
