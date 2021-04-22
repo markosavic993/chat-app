@@ -6,40 +6,57 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 16px 16px 120px;
+  flex-wrap: nowrap;
+  padding: 16px 16px;
   background-color: white;
 
-  .messages {
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    padding-left: 0;
-    overflow:hidden;
-    overflow-y:scroll;
+  .header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 0 16px;
+    overflow: hidden;
   }
 
-  .messageItem {
-    border: 1px solid lightgrey;
-    border-radius:2%;
-    padding: 10px;
-    width: 40%;
-    min-height: 25px;
-    margin-bottom: 16px;
-    word-wrap:break-word;
-  }
+  .messagesWrapper {
+    position: absolute;
+    top: 100px;
+    bottom: 150px;
+    padding: 0 16px;
+    right: 0;
+    left: 0;
+    overflow: auto;
 
-  .myMessage {
-    background-color: #fefbd8;
-    margin-left: auto;
-  }
+    .messages {
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      padding: 0;
+    }
 
-  .receivedMessage {
-    background-color: #d5f4e6;
+    .messageItem {
+      border: 1px solid lightgrey;
+      border-radius: 2%;
+      padding: 10px;
+      width: 40%;
+      min-height: 25px;
+      margin-bottom: 16px;
+      word-wrap: break-word;
+    }
+
+    .myMessage {
+      background-color: #fefbd8;
+      margin-left: auto;
+    }
+
+    .receivedMessage {
+      background-color: #d5f4e6;
+    }
   }
 
   .actionArea {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 0;
     left: 0;

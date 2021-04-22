@@ -26,8 +26,10 @@ const ChatRoom = (props) => {
 
   return (
     <div className="cr-container">
-      <h1>{title}</h1>
-      <div>
+      <div className="header">
+        <h1>{title}</h1>
+      </div>
+      <div className="messagesWrapper">
         <ol className="messages">
           {messages.map((message, i) => (
             <li
